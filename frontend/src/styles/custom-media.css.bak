@@ -1,0 +1,52 @@
+/* ================================
+   CUSTOM MEDIA QUERIES
+   ================================ */
+
+/* Mobile First Breakpoints */
+@custom-media --mobile (max-width: 640px);
+@custom-media --tablet (min-width: 641px) and (max-width: 1024px);
+@custom-media --desktop (min-width: 1025px);
+@custom-media --large (min-width: 1280px);
+@custom-media --xl (min-width: 1536px);
+
+/* Orientation Media Queries */
+@custom-media --landscape (orientation: landscape);
+@custom-media --portrait (orientation: portrait);
+
+/* Dark/Light Mode Preference */
+@custom-media --dark (prefers-color-scheme: dark);
+@custom-media --light (prefers-color-scheme: light);
+
+/* Reduced Motion for Accessibility */
+@custom-media --reduced-motion (prefers-reduced-motion: reduce);
+@custom-media --motion (prefers-reduced-motion: no-preference);
+
+/* High Contrast for Accessibility */
+@custom-media --high-contrast (prefers-contrast: high);
+
+/* Hover Capability */
+@custom-media --hover (hover: hover);
+@custom-media --no-hover (hover: none);
+
+/* Touch Capability */
+@custom-media --touch (pointer: coarse);
+@custom-media --fine-pointer (pointer: fine);
+
+/* Device Pixel Ratio */
+@custom-media --retina (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi);
+@custom-media --ultra-retina (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi);
+
+/* Custom ZeroDay Shop Breakpoints */
+@custom-media --cyber-mobile (max-width: 768px);
+@custom-media --cyber-tablet (min-width: 769px) and (max-width: 1199px);
+@custom-media --cyber-desktop (min-width: 1200px);
+@custom-media --cyber-wide (min-width: 1600px);
+
+/* Terminal Display Sizes */
+@custom-media --terminal-small (max-width: 480px);
+@custom-media --terminal-medium (min-width: 481px) and (max-width: 800px);
+@custom-media --terminal-large (min-width: 801px);
+
+/* Gaming & Performance */
+@custom-media --high-refresh (min-refresh: 90hz);
+@custom-media --standard-refresh (max-refresh: 89hz);

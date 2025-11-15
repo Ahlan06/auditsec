@@ -1,0 +1,209 @@
+﻿import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { CreditCard, Bitcoin, Loader2, AlertCircle } from 'lucide-react';
+import useCartStore from '../store/cartStore';
+import useThemeStore from '../store/themeStore';
+import { paymentAPI } from '../services/api';
+
+const CheckoutPage = () => {
+  const navigate = useNavigate();
+  const { items, total, clearCart } = useCartStore();
+  const { isDarkMode } = useThemeStore();
+  const [email, setEmail] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState('stripe');
+  const [cryptoCurrency, setCryptoCurrency] = useState('bitcoin');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleStripePayment = async () => {
+    try {
+      setIsProcessing(true);
+      setError('');
+
+      // Préparer les items pour l'API avec toutes les données produit
+      const cartItems = items.map(item => ({
+        productId: item.id,
+        name: item.name,
+        description: item.description,
+        price: item.price,
+        quantity: item.quantity || 1
+      }));
+
+      console.log('🛒 Sending cart items to backend:', cartItems);
+
+      // Create Stripe session
+      const { sessionId } = await paymentAPI.createStripeSession(cartItems, email);
+
+      // Charger Stripe
+      const stripe = window.Stripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+      
+      // Rediriger vers Stripe Checkout
+      const { error } = await stripe.redirectToCheckout({ sessionId });
+
+      if (error) {
+        throw new Error(error.message);
+      }
+    } catch (err) {
+      console.error('Stripe payment error:', err);
+      setError(err.message || 'Payment error');
+      setIsProcessing(false);
+    }
+  };
+
+  const handleCryptoPayment = async () => {
+    try {
+      setIsProcessing(true);
+      setError('');
+
+      // Prepare items for API
+      const cartItems = items.map(item => ({
+        productId: item.id,
+        quantity: item.quantity
+      }));
+
+      // Create crypto payment
+      const cryptoData = await paymentAPI.createCryptoPayment(
+        cartItems,
+        email,
+        cryptoCurrency
+      );
+
+      // Redirect to crypto payment page with info
+      navigate('/crypto-payment', {
+        state: {
+          orderId: cryptoData.orderId,
+          paymentAddress: cryptoData.paymentAddress,
+          amount: cryptoData.amount,
+          currency: cryptoData.currency,
+          qrCodeUrl: cryptoData.qrCodeUrl,
+          expiresAt: cryptoData.expiresAt
+        }
+      });
+    } catch (err) {
+      console.error('Crypto payment error:', err);
+      setError(err.message || 'Error creating crypto payment');
+      setIsProcessing(false);
+    }
+  };
+
+  const handlePayment = () => {
+    if (paymentMethod === 'stripe') {
+      handleStripePayment();
+    } else {
+      handleCryptoPayment();
+    }
+  };
+
+  return (
+    <div className={`min-h-screen pt-20 p-4 ${isDarkMode ? 'bg-black text-green-400' : 'bg-gray-50 text-gray-900'}`}>
+      <div className="max-w-md mx-auto">
+        <h1 className="text-2xl mb-6">Secure Checkout</h1>
+        
+        {/* Payment method */}
+        <div className="mb-6">
+          <h3 className="text-lg font-semibold mb-3">Payment Method</h3>
+          <div className="space-y-2">
+            <label className={`flex items-center p-3 border rounded cursor-pointer ${
+              paymentMethod === 'stripe' 
+                ? isDarkMode ? 'border-green-500 bg-green-500/10' : 'border-emerald-500 bg-emerald-50'
+                : isDarkMode ? 'border-gray-600' : 'border-gray-300'
+            }`}>
+              <input
+                type="radio"
+                value="stripe"
+                checked={paymentMethod === 'stripe'}
+                onChange={(e) => setPaymentMethod(e.target.value)}
+                className="mr-3"
+              />
+              <CreditCard className="w-5 h-5 mr-2" />
+              <span>Credit Card</span>
+            </label>
+            
+            <label className={`flex items-center p-3 border rounded cursor-pointer ${
+              paymentMethod === 'crypto' 
+                ? isDarkMode ? 'border-green-500 bg-green-500/10' : 'border-emerald-500 bg-emerald-50'
+                : isDarkMode ? 'border-gray-600' : 'border-gray-300'
+            }`}>
+              <input
+                type="radio"
+                value="crypto"
+                checked={paymentMethod === 'crypto'}
+                onChange={(e) => setPaymentMethod(e.target.value)}
+                className="mr-3"
+              />
+              <Bitcoin className="w-5 h-5 mr-2" />
+              <span>Cryptomonnaies</span>
+            </label>
+          </div>
+        </div>
+
+        {/* Crypto Currency Selection (if crypto selected) */}
+        {paymentMethod === 'crypto' && (
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold mb-3">Cryptomonnaie</h3>
+            <select
+              value={cryptoCurrency}
+              onChange={(e) => setCryptoCurrency(e.target.value)}
+              className={`w-full px-3 py-2 rounded border ${isDarkMode ? 'bg-gray-800 text-white border-gray-600' : 'bg-white border-gray-300'}`}
+            >
+              <option value="bitcoin">Bitcoin (BTC)</option>
+              <option value="ethereum">Ethereum (ETH)</option>
+              <option value="litecoin">Litecoin (LTC)</option>
+            </select>
+          </div>
+        )}
+
+        {/* Email */}
+        <div className="mb-6">
+          <label className="block text-sm font-medium mb-2">Email</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className={`w-full px-3 py-2 rounded border ${isDarkMode ? 'bg-gray-800 text-white border-gray-600' : 'bg-white border-gray-300'}`}
+            placeholder="votre@email.com"
+            disabled={isProcessing}
+          />
+        </div>
+
+        {/* Error Message */}
+        {error && (
+          <div className={`mb-6 p-4 rounded border flex items-start ${isDarkMode ? 'bg-red-900/20 border-red-500/50 text-red-400' : 'bg-red-50 border-red-300 text-red-700'}`}>
+            <AlertCircle className="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" />
+            <span>{error}</span>
+          </div>
+        )}
+        
+        {/* Total */}
+        <div className={`p-4 rounded border mb-6 ${isDarkMode ? 'bg-gray-900 border-green-500/20' : 'bg-gray-100 border-gray-300'}`}>
+          <div className="flex justify-between items-center">
+            <span className="font-semibold">Total TTC:</span>
+            <span className="text-xl font-bold">€{(total * 1.2).toFixed(2)}</span>
+          </div>
+        </div>
+        
+        {/* Payment button */}
+        <button 
+          onClick={handlePayment}
+          disabled={!email.trim() || isProcessing}
+          className={`w-full py-3 rounded font-bold transition-colors flex items-center justify-center ${
+            email.trim() && !isProcessing
+              ? isDarkMode ? 'bg-green-600 hover:bg-green-700 text-black' : 'bg-emerald-600 hover:bg-emerald-700 text-white'
+              : 'bg-gray-400 text-gray-200 cursor-not-allowed'
+          }`}
+        >
+          {isProcessing ? (
+            <>
+              <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+              Traitement...
+            </>
+          ) : (
+            paymentMethod === 'stripe' ? 'Payer par Carte' : 'Payer en Crypto'
+          )}
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default CheckoutPage;

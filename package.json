@@ -1,0 +1,42 @@
+{
+  "name": "zeroday-shop",
+  "version": "1.0.0",
+  "description": "E-commerce cybersécurité - vente de produits digitaux pour hackers éthiques",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "nodemon backend/server.js",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "start": "node backend/server.js",
+    "install:all": "npm install && cd frontend && npm install",
+    "setup": "npm run install:all"
+  },
+  "keywords": [
+    "ecommerce",
+    "cybersecurity",
+    "pentest",
+    "digital-products"
+  ],
+  "author": "ZeroDay Shop",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.1498.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.3",
+    "nodemailer": "^6.9.7",
+    "stripe": "^14.7.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.2"
+  }
+}

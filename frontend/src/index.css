@@ -1,0 +1,653 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Fonts Apple-like */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  min-height: 100vh;
+  background: #ffffff;
+  color: #1d1d1f;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode */
+.dark body {
+  background: #000000;
+  color: #f5f5f7;
+}
+
+html {
+  transition: background-color 0.3s ease;
+}
+
+.dark html {
+  background: #000000;
+}
+
+/* ============================================
+   ANIMATIONS SCROLL-TRIGGERED TYPE APPLE
+   ============================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.scale-in {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+/* ============================================
+   TYPOGRAPHIE STYLE APPLE
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #1d1d1f 0%, #6e6e73 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: background 0.3s ease;
+}
+
+.dark .hero-title {
+  background: linear-gradient(135deg, #f5f5f7 0%, #a1a1a6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 400;
+  color: #86868b;
+  letter-spacing: -0.01em;
+  transition: color 0.3s ease;
+}
+
+.dark .hero-subtitle {
+  color: #a1a1a6;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 600;
+  color: #1d1d1f;
+  transition: color 0.3s ease;
+}
+
+.dark .section-title {
+  color: #f5f5f7;
+  letter-spacing: -0.02em;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1d1d1f;
+  transition: color 0.3s ease;
+}
+
+.dark .card-title {
+  color: #f5f5f7;
+}
+
+/* ============================================
+   CARTES PRODUITS STYLE APPLE
+   ============================================ */
+
+.apple-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 2rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.dark .apple-card {
+  background: #1c1c1e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.apple-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.dark .apple-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.product-card {
+  background: #fbfbfd;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.dark .product-card {
+  background: #1c1c1e;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.dark .product-card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Glass effect Apple style */
+.glass-apple {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.dark .glass-apple {
+  background: rgba(28, 28, 30, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   BOUTONS STYLE APPLE
+   ============================================ */
+
+.apple-button {
+  background: #0071e3;
+  color: #ffffff;
+  border: none;
+  border-radius: 980px;
+  padding: 12px 24px;
+  font-size: 17px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dark .apple-button {
+  background: #0a84ff;
+  box-shadow: 0 2px 8px rgba(10, 132, 255, 0.3);
+}
+
+.apple-button:hover {
+  background: #0077ed;
+  transform: scale(0.98);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dark .apple-button:hover {
+  background: #409cff;
+  box-shadow: 0 4px 12px rgba(10, 132, 255, 0.4);
+}
+
+.apple-button:active {
+  transform: scale(0.96);
+}
+
+.apple-button-secondary {
+  background: transparent;
+  color: #0071e3;
+  border: 2px solid #0071e3;
+  border-radius: 980px;
+  padding: 10px 22px;
+  font-size: 17px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .apple-button-secondary {
+  color: #0a84ff;
+  border-color: #0a84ff;
+}
+
+.apple-button-secondary:hover {
+  background: #0071e3;
+  color: #ffffff;
+  transform: scale(0.98);
+}
+
+.dark .apple-button-secondary:hover {
+  background: #0a84ff;
+  color: #ffffff;
+}
+
+/* ============================================
+   LIENS ET MICRO-INTERACTIONS
+   ============================================ */
+
+.apple-link {
+  color: #0071e3;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.apple-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: #0071e3;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+}
+
+.apple-link:hover::after {
+  width: 100%;
+}
+
+.apple-link:hover {
+  color: #0077ed;
+}
+
+/* Scale on click */
+.clickable {
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.clickable:active {
+  transform: scale(0.98);
+}
+
+/* ============================================
+   TERMINAL MACOS STYLE
+   ============================================ */
+
+.terminal-window {
+  background: #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+}
+
+.terminal-header {
+  background: #2d2d2d;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: opacity 0.2s;
+}
+
+.terminal-button:hover {
+  opacity: 0.8;
+}
+
+.terminal-button.red {
+  background: #ff5f56;
+}
+
+.terminal-button.yellow {
+  background: #ffbd2e;
+}
+
+.terminal-button.green {
+  background: #27c93f;
+}
+
+.terminal-body {
+  background: #1e1e1e;
+  padding: 20px;
+  color: #d4d4d4;
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 200px;
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background: #d4d4d4;
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.typing-effect {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2s steps(40, end);
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* ============================================
+   HERO SECTION STYLE APPLE
+   ============================================ */
+
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 20px;
+  background: radial-gradient(ellipse at center, #f5f5f7 0%, #ffffff 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cta-section {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+/* Section avec espaces blancs */
+.apple-section {
+  padding: 120px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.spacer {
+  height: 80px;
+}
+
+/* ============================================
+   SCROLLBAR STYLE APPLE
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(0, 113, 227, 0.2);
+  color: inherit;
+}
+
+/* ============================================
+   LOADING STATES
+   ============================================ */
+
+.apple-spinner {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-top: 2px solid #0071e3;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+  
+  .apple-section {
+    padding: 60px 20px;
+  }
+  
+  .spacer {
+    height: 40px;
+  }
+}
+
+/* ============================================
+   HEADER FIXE STYLE APPLE
+   ============================================ */
+
+.apple-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.dark .apple-header {
+  background: rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.apple-header.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.dark .apple-header.scrolled {
+  background: rgba(0, 0, 0, 0.95);
+  box-shadow: 0 1px 2px rgba(255, 255, 255, 0.05);
+}
+
+.apple-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 48px;
+}
+
+.apple-nav-link {
+  color: #1d1d1f;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.dark .apple-nav-link {
+  color: #f5f5f7;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0 12px;
+  transition: opacity 0.3s ease;
+}
+
+.apple-nav-link:hover {
+  opacity: 0.7;
+}
+
+/* ============================================
+   DARK MODE GLOBAL STYLES
+   ============================================ */
+
+/* Text colors */
+.dark .text-gray-600 {
+  color: #a1a1a6;
+}
+
+.dark .text-gray-700 {
+  color: #c7c7cc;
+}
+
+.dark .text-gray-800 {
+  color: #e5e5ea;
+}
+
+.dark .text-gray-900 {
+  color: #f5f5f7;
+}
+
+/* Background colors */
+.dark .bg-gray-50 {
+  background-color: #1c1c1e;
+}
+
+.dark .bg-gray-100 {
+  background-color: #2c2c2e;
+}
+
+.dark .bg-white {
+  background-color: #000000;
+}
+
+/* Border colors */
+.dark .border-gray-200 {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .border-gray-300 {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Inputs */
+.dark input,
+.dark textarea {
+  background-color: #1c1c1e;
+  color: #f5f5f7;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #86868b;
+}
+
+.dark input:focus,
+.dark textarea:focus {
+  border-color: #0a84ff;
+}
+
+/* Hover states for cards and clickable elements */
+.dark .hover\:bg-gray-50:hover {
+  background-color: #2c2c2e;
+}
+
+.dark .hover\:bg-gray-100:hover {
+  background-color: #3a3a3c;
+}
