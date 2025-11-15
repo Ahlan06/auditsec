@@ -363,5 +363,4 @@ Ensure all environment variables are properly configured in your hosting platfor
 
 *© 2025 AuditSec - Professional Security Services*
 
-</div>#   a u d i t s e c  
- 
+</div>
