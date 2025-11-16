@@ -114,10 +114,12 @@ const ContactPage = () => {
         serviceId,
         templateId,
         {
-          name: formData.name,
-          email: formData.email,
+          from_name: formData.name,
+          from_email: formData.email,
+          to_name: 'AuditSec',
           subject: formData.subject,
-          message: formData.message
+          message: formData.message,
+          reply_to: formData.email
         },
         publicKey
       );
