@@ -17,13 +17,13 @@ const Cart = () => {
       
       <div className={`absolute right-0 top-0 h-full w-96 overflow-y-auto transition-colors duration-300 ${
         isDarkMode 
-          ? 'bg-black border-l border-green-500' 
+          ? 'bg-black border-l border-gray-800' 
           : 'bg-white border-l border-slate-200'
       }`}>
         <div className="p-6">
           <div className="flex items-center justify-between mb-6">
             <h2 className={`text-2xl font-bold transition-colors duration-300 ${
-              isDarkMode ? 'text-green-400' : 'text-slate-800'
+              isDarkMode ? 'text-white' : 'text-slate-800'
             }`}>{t('cart')}</h2>
             <button 
               onClick={toggleCart}
@@ -48,7 +48,7 @@ const Cart = () => {
                   }`}>
                     <div className="flex items-center justify-between mb-2">
                       <h3 className={`font-bold transition-colors duration-300 ${
-                        isDarkMode ? 'text-green-400' : 'text-slate-800'
+                        isDarkMode ? 'text-white' : 'text-slate-800'
                       }`}>{item.name}</h3>
                       <button 
                         onClick={() => removeItem(item.id)}
@@ -83,7 +83,7 @@ const Cart = () => {
                         </button>
                       </div>
                       <span className={`font-bold transition-colors duration-300 ${
-                        isDarkMode ? 'text-green-400' : 'text-emerald-600'
+                        isDarkMode ? 'text-[#0071e3]' : 'text-[#0071e3]'
                       }`}>
                         €{(item.price * item.quantity).toFixed(2)}
                       </span>
@@ -100,7 +100,7 @@ const Cart = () => {
                     isDarkMode ? 'text-white' : 'text-slate-800'
                   }`}>Total:</span>
                   <span className={`text-xl font-bold transition-colors duration-300 ${
-                    isDarkMode ? 'text-green-400' : 'text-emerald-600'
+                    isDarkMode ? 'text-[#0071e3]' : 'text-[#0071e3]'
                   }`}>
                     €{total.toFixed(2)}
                   </span>
@@ -109,10 +109,10 @@ const Cart = () => {
                 <div className="space-y-2">
                   <Link
                     to="/checkout"
-                    className={`w-full inline-block text-center py-3 rounded font-bold transition-colors ${
+                    className={`w-full inline-block text-center py-3 rounded-full font-semibold transition-all ${
                       isDarkMode 
-                        ? 'bg-green-400 text-black hover:bg-green-300' 
-                        : 'bg-emerald-600 text-white hover:bg-emerald-700'
+                        ? 'bg-[#0071e3] text-white hover:bg-[#0077ed]' 
+                        : 'bg-[#0071e3] text-white hover:bg-[#0077ed]'
                     }`}
                   >
                     Checkout

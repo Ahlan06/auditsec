@@ -95,18 +95,18 @@ const CheckoutPage = () => {
   };
 
   return (
-    <div className={`min-h-screen pt-20 p-4 ${isDarkMode ? 'bg-black text-green-400' : 'bg-gray-50 text-gray-900'}`}>
+    <div className={`min-h-screen pt-20 p-4 ${isDarkMode ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'}`}>
       <div className="max-w-md mx-auto">
-        <h1 className="text-2xl mb-6">Secure Checkout</h1>
+        <h1 className={`text-2xl mb-6 font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Secure Checkout</h1>
         
         {/* Payment method */}
         <div className="mb-6">
-          <h3 className="text-lg font-semibold mb-3">Payment Method</h3>
+          <h3 className={`text-lg font-semibold mb-3 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Payment Method</h3>
           <div className="space-y-2">
-            <label className={`flex items-center p-3 border rounded cursor-pointer ${
+            <label className={`flex items-center p-3 border rounded-lg cursor-pointer transition-all ${
               paymentMethod === 'stripe' 
-                ? isDarkMode ? 'border-green-500 bg-green-500/10' : 'border-emerald-500 bg-emerald-50'
-                : isDarkMode ? 'border-gray-600' : 'border-gray-300'
+                ? isDarkMode ? 'border-[#0071e3] bg-[#0071e3]/10' : 'border-[#0071e3] bg-blue-50'
+                : isDarkMode ? 'border-gray-700 hover:border-gray-600' : 'border-gray-300 hover:border-gray-400'
             }`}>
               <input
                 type="radio"
@@ -119,10 +119,10 @@ const CheckoutPage = () => {
               <span>Credit Card</span>
             </label>
             
-            <label className={`flex items-center p-3 border rounded cursor-pointer ${
+            <label className={`flex items-center p-3 border rounded-lg cursor-pointer transition-all ${
               paymentMethod === 'crypto' 
-                ? isDarkMode ? 'border-green-500 bg-green-500/10' : 'border-emerald-500 bg-emerald-50'
-                : isDarkMode ? 'border-gray-600' : 'border-gray-300'
+                ? isDarkMode ? 'border-[#0071e3] bg-[#0071e3]/10' : 'border-[#0071e3] bg-blue-50'
+                : isDarkMode ? 'border-gray-700 hover:border-gray-600' : 'border-gray-300 hover:border-gray-400'
             }`}>
               <input
                 type="radio"
@@ -175,10 +175,10 @@ const CheckoutPage = () => {
         )}
         
         {/* Total */}
-        <div className={`p-4 rounded border mb-6 ${isDarkMode ? 'bg-gray-900 border-green-500/20' : 'bg-gray-100 border-gray-300'}`}>
+        <div className={`p-4 rounded-lg border mb-6 ${isDarkMode ? 'bg-[#1d1d1f] border-gray-800' : 'bg-gray-100 border-gray-300'}`}>
           <div className="flex justify-between items-center">
-            <span className="font-semibold">Total TTC:</span>
-            <span className="text-xl font-bold">€{(total * 1.2).toFixed(2)}</span>
+            <span className={`font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Total TTC:</span>
+            <span className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>€{(total * 1.2).toFixed(2)}</span>
           </div>
         </div>
         
@@ -186,9 +186,9 @@ const CheckoutPage = () => {
         <button 
           onClick={handlePayment}
           disabled={!email.trim() || isProcessing}
-          className={`w-full py-3 rounded font-bold transition-colors flex items-center justify-center ${
+          className={`w-full py-3 rounded-full font-semibold transition-all flex items-center justify-center ${
             email.trim() && !isProcessing
-              ? isDarkMode ? 'bg-green-600 hover:bg-green-700 text-black' : 'bg-emerald-600 hover:bg-emerald-700 text-white'
+              ? isDarkMode ? 'bg-[#0071e3] hover:bg-[#0077ed] text-white' : 'bg-[#0071e3] hover:bg-[#0077ed] text-white'
               : 'bg-gray-400 text-gray-200 cursor-not-allowed'
           }`}
         >

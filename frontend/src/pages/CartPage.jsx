@@ -46,10 +46,10 @@ const CartPage = () => {
             </p>
             <Link
               to="/products"
-              className={`inline-flex items-center px-8 py-3 rounded-lg transition-colors ${
+              className={`inline-flex items-center px-8 py-3 rounded-full font-semibold transition-all ${
                 isDarkMode 
-                  ? 'bg-green-600 hover:bg-green-700 text-black border border-green-500' 
-                  : 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                  ? 'bg-[#0071e3] hover:bg-[#0077ed] text-white' 
+                  : 'bg-[#0071e3] hover:bg-[#0077ed] text-white'
               }`}
             >
               <ArrowLeft className="w-5 h-5 mr-2" />
@@ -64,7 +64,7 @@ const CartPage = () => {
   return (
     <div className={`min-h-screen py-8 pt-20 ${
       isDarkMode 
-        ? 'bg-black text-green-400' 
+        ? 'bg-black text-white' 
         : 'bg-gray-50 text-gray-900'
     }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -72,7 +72,7 @@ const CartPage = () => {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className={`text-3xl font-bold ${
-              isDarkMode ? 'text-green-400' : 'text-gray-900'
+              isDarkMode ? 'text-white' : 'text-gray-900'
             }`}>
               Mon Panier
             </h1>
@@ -86,11 +86,11 @@ const CartPage = () => {
           <div className="flex items-center space-x-4">
             <Link
               to="/"
-              className={`inline-flex items-center px-4 py-2 rounded-lg ${
+              className={`inline-flex items-center px-4 py-2 rounded-full font-semibold ${
                 isDarkMode 
-                  ? 'bg-green-600 hover:bg-green-700 text-black border border-green-500' 
-                  : 'bg-emerald-600 hover:bg-emerald-700 text-white'
-              } transition-colors`}
+                  ? 'bg-[#0071e3] hover:bg-[#0077ed] text-white' 
+                  : 'bg-[#0071e3] hover:bg-[#0077ed] text-white'
+              } transition-all`}
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Continuer les achats
@@ -279,10 +279,10 @@ const CartPage = () => {
 
               <Link
                 to="/checkout"
-                className={`w-full inline-flex items-center justify-center px-6 py-4 rounded-lg font-bold transition-colors ${
+                className={`w-full inline-flex items-center justify-center px-6 py-4 rounded-full font-semibold transition-all ${
                   isDarkMode 
-                    ? 'bg-green-600 hover:bg-green-700 text-black' 
-                    : 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                    ? 'bg-[#0071e3] hover:bg-[#0077ed] text-white' 
+                    : 'bg-[#0071e3] hover:bg-[#0077ed] text-white'
                 }`}
               >
                 <CreditCard className="w-5 h-5 mr-2" />

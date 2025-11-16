@@ -1,6 +1,8 @@
 import { Shield, Search, Network, CheckCircle, Mail, Send } from 'lucide-react';
+import { useTheme } from '../store/themeStore';
 
 const ServicesPage = () => {
+  const { isDarkMode } = useTheme();
   const services = [
     {
       id: 'pentest-web',
@@ -258,17 +260,27 @@ const ServicesPage = () => {
       <div className="spacer"></div>
 
       {/* CTA Section */}
-      <section className="bg-gray-50 py-20">
+      <section className={`py-20 transition-colors duration-300 ${
+        isDarkMode ? 'bg-[#1d1d1f]' : 'bg-gray-50'
+      }`}>
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="section-title mb-6">
+          <h2 className={`text-3xl font-bold mb-6 transition-colors duration-300 ${
+            isDarkMode ? 'text-white' : 'text-gray-900'
+          }`}>
             Need a custom solution?
           </h2>
-          <p className="hero-subtitle mb-8">
+          <p className={`text-lg mb-8 transition-colors duration-300 ${
+            isDarkMode ? 'text-gray-400' : 'text-gray-600'
+          }`}>
             Contact us for a tailored security assessment plan
           </p>
           <button
             onClick={() => handleContactClick('Custom Solution')}
-            className="apple-button clickable flex items-center gap-2 mx-auto"
+            className={`inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
+              isDarkMode
+                ? 'bg-gray-900 text-white hover:bg-gray-800 border border-gray-700'
+                : 'bg-gray-900 text-white hover:bg-gray-800'
+            }`}
           >
             <Send size={18} />
             Contact Us

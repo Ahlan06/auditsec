@@ -66,3 +66,4 @@ if (typeof window !== 'undefined') {
 };
 
 export default useThemeStore;
+export { useThemeStore as useTheme };
