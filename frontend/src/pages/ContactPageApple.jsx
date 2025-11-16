@@ -103,7 +103,10 @@ const ContactPage = () => {
         throw new Error('Email service not configured. Please contact administrator.');
       }
 
-      console.log('📧 Envoi de l\'email en cours...');
+      console.log('📧 Envoi de l\'email en cours avec EmailJS...');
+      console.log('Service ID:', serviceId);
+      console.log('Template ID:', templateId);
+      console.log('Public Key:', publicKey ? 'Configuré' : 'Non configuré');
       console.log('Données envoyées:', formData);
       
       // Utiliser send() au lieu de sendForm() pour plus de contrôle
