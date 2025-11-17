@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { useEffect } from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import HeaderApple from './components/HeaderApple';
+import FooterApple from './components/FooterApple';
 import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
 import ProductDetailPage from './pages/ProductDetailPage';
@@ -12,6 +12,9 @@ import SuccessPage from './pages/SuccessPage';
 import DownloadPage from './pages/DownloadPage';
 import ContactPage from './pages/ContactPage';
 import AdminPage from './pages/AdminPage';
+import GuidesPage from './pages/GuidesPage';
+import GuideDetailPage from './pages/GuideDetailPage';
+import CategoryListPage from './pages/CategoryListPage';
 import Cart from './components/Cart';
 import useThemeStore from './store/themeStore';
 import './App.css';
@@ -25,9 +28,9 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen font-mono">
-        <Header />
-        <main className="pt-16 relative z-10">
+      <div className="min-h-screen font-sans">
+        <HeaderApple />
+        <main className="relative z-10">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/products" element={<ProductsPage />} />
@@ -38,9 +41,12 @@ function App() {
             <Route path="/download/:token" element={<DownloadPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/admin" element={<AdminPage />} />
+            <Route path="/guides" element={<GuidesPage />} />
+            <Route path="/category/:categoryId" element={<CategoryListPage />} />
+            <Route path="/guide/:slug" element={<GuideDetailPage />} />
           </Routes>
         </main>
-        <Footer />
+        <FooterApple />
         <Cart />
         <Toaster
           position="bottom-right"
