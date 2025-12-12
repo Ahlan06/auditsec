@@ -13,7 +13,7 @@ const ProductsPageApple = () => {
       id: 'test-1',
       name: 'Security Audit - Starter',
       description: 'Complete security audit for small businesses',
-      price: 69,
+      price: 600,
       category: 'audit',
       features: ['Vulnerability scan', 'Detailed report', '30 days support'],
       image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400'
@@ -22,7 +22,7 @@ const ProductsPageApple = () => {
       id: 'test-2',
       name: 'Pentest Web Application',
       description: 'In-depth penetration testing of your web application',
-      price: 99,
+      price: 700,
       category: 'pentest',
       features: ['Manual testing', 'Automated testing', 'Executive report', '60 days support'],
       image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400'
@@ -31,7 +31,7 @@ const ProductsPageApple = () => {
       id: 'test-3',
       name: 'Cybersecurity Training',
       description: 'Complete cybersecurity training for your team',
-      price: 149,
+      price: 550,
       category: 'training',
       features: ['8 hours training', 'Certification', 'Materials included', 'Unlimited support'],
       image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400'
@@ -140,8 +140,8 @@ const ProductsPageApple = () => {
                           ? 'bg-green-600 text-white cursor-not-allowed'
                           : 'bg-green-500 text-white cursor-not-allowed'
                         : isDarkMode
-                          ? 'bg-[#0071e3] hover:bg-[#0077ed] text-white'
-                          : 'bg-[#0071e3] hover:bg-[#0077ed] text-white'
+                          ? 'bg-[#6b7280] hover:bg-[#4b5563] text-white'
+                          : 'bg-[#6b7280] hover:bg-[#4b5563] text-white'
                     }`}
                   >
                     {isInCart(product.id) ? (

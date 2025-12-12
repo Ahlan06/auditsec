@@ -105,7 +105,7 @@ const CheckoutPage = () => {
           <div className="space-y-2">
             <label className={`flex items-center p-3 border rounded-lg cursor-pointer transition-all ${
               paymentMethod === 'stripe' 
-                ? isDarkMode ? 'border-[#0071e3] bg-[#0071e3]/10' : 'border-[#0071e3] bg-blue-50'
+                ? isDarkMode ? 'border-[#6b7280] bg-[#6b7280]/10' : 'border-[#6b7280] bg-gray-50'
                 : isDarkMode ? 'border-gray-700 hover:border-gray-600' : 'border-gray-300 hover:border-gray-400'
             }`}>
               <input
@@ -121,7 +121,7 @@ const CheckoutPage = () => {
             
             <label className={`flex items-center p-3 border rounded-lg cursor-pointer transition-all ${
               paymentMethod === 'crypto' 
-                ? isDarkMode ? 'border-[#0071e3] bg-[#0071e3]/10' : 'border-[#0071e3] bg-blue-50'
+                ? isDarkMode ? 'border-[#6b7280] bg-[#6b7280]/10' : 'border-[#6b7280] bg-gray-50'
                 : isDarkMode ? 'border-gray-700 hover:border-gray-600' : 'border-gray-300 hover:border-gray-400'
             }`}>
               <input
@@ -188,7 +188,7 @@ const CheckoutPage = () => {
           disabled={!email.trim() || isProcessing}
           className={`w-full py-3 rounded-full font-semibold transition-all flex items-center justify-center ${
             email.trim() && !isProcessing
-              ? isDarkMode ? 'bg-[#0071e3] hover:bg-[#0077ed] text-white' : 'bg-[#0071e3] hover:bg-[#0077ed] text-white'
+                ? isDarkMode ? 'bg-[#6b7280] hover:bg-[#4b5563] text-white' : 'bg-[#6b7280] hover:bg-[#4b5563] text-white'
               : 'bg-gray-400 text-gray-200 cursor-not-allowed'
           }`}
         >

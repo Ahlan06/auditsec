@@ -20,18 +20,18 @@ const GuideCardLarge = ({ guide }) => {
       to={`/guide/${guide.slug}`}
       className="group block"
     >
-      <div className="apple-card p-8 hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#0071e3]">
+      <div className="apple-card p-8 hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#6b7280]">
         {/* Header */}
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
-            <h3 className="text-2xl font-semibold text-gray-900 group-hover:text-[#0071e3] transition-colors mb-3">
+            <h3 className="text-2xl font-semibold text-gray-900 group-hover:text-[#6b7280] transition-colors mb-3">
               {guide.title}
             </h3>
             <p className="text-gray-600 leading-relaxed mb-4">
               {guide.description}
             </p>
           </div>
-          <ChevronRight className="w-6 h-6 text-gray-400 group-hover:text-[#0071e3] group-hover:translate-x-2 transition-all flex-shrink-0 ml-4 mt-1" />
+          <ChevronRight className="w-6 h-6 text-gray-400 group-hover:text-[#6b7280] group-hover:translate-x-2 transition-all flex-shrink-0 ml-4 mt-1" />
         </div>
 
         {/* Meta Info */}

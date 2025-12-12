@@ -8,6 +8,9 @@ import ContactPageApple from './pages/ContactPageApple';
 import ServicesPageApple from './pages/ServicesPageApple';
 import GuidesPageApple from './pages/GuidesPageApple';
 import ProductsPageApple from './pages/ProductsPageApple';
+import CourseListPage from './pages/CourseListPage';
+import CourseDetailPage from './pages/CourseDetailPage';
+import CourseMockPage from './pages/CourseMockPage';
 import CartPage from './pages/CartPage';
 import PaymentSuccessPage from './pages/PaymentSuccessPage';
 import CheckoutPage from './pages/CheckoutPage';
@@ -37,6 +40,10 @@ function App() {
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/crypto-payment" element={<CryptoPaymentPage />} />
             <Route path="/payment-success" element={<PaymentSuccessPage />} />
+            {/* Courses routes (restored) */}
+            <Route path="/courses" element={<CourseListPage />} />
+            <Route path="/courses/:slug" element={<CourseDetailPage />} />
+            <Route path="/courses-mock" element={<CourseMockPage />} />
           </Routes>
         </main>
         <FooterApple />

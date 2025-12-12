@@ -1,4 +1,4 @@
-import { Shield, BookOpen, Video, FileText, Lightbulb, ArrowRight, Download, Clock, Star } from 'lucide-react';
+import { Shield, BookOpen, Video, FileText, Lightbulb, ArrowRight, Download, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const GuidesPageApple = () => {
@@ -101,7 +101,8 @@ const GuidesPageApple = () => {
     <div className="min-h-screen bg-white dark:bg-black pt-20 transition-colors duration-300">
       {/* Hero Section */}
       <section className="apple-section pb-0">
-        <div className="max-w-6xl mx-auto px-4 text-center">
+        <div className="max-w-6xl mx-auto px-4 text-center hero-wrapper">
+          <div className="hero-decor" aria-hidden="true" />
           <div className="inline-flex items-center gap-2 bg-gray-100 dark:bg-gray-800 rounded-full px-4 py-2 mb-6 fade-in">
             <BookOpen className="w-4 h-4 text-blue-500" />
             <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Knowledge Base</span>
@@ -113,6 +114,12 @@ const GuidesPageApple = () => {
           <p className="hero-subtitle mb-8 fade-in-up max-w-3xl mx-auto" style={{animationDelay: '0.1s'}}>
             Comprehensive guides, tutorials, and resources to enhance your cybersecurity skills
           </p>
+          <div className="hero-decor" />
+          <div className="mb-8">
+            <Link to="/courses" className="apple-button px-6 py-3">
+              Access Courses
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -267,7 +274,7 @@ const GuidesPageApple = () => {
       <section className="apple-section bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="apple-card p-12">
-            <Star className="w-12 h-12 text-yellow-500 mx-auto mb-4" />
+            <img src="/course-icons/star-cta.svg" alt="star" className="hero-star mx-auto mb-4" />
             <h2 className="text-3xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
               Ready to Level Up Your Skills?
             </h2>

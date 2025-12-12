@@ -17,7 +17,7 @@ const ServicesPage = () => {
         'Detailed PDF report with evidence',
         'Prioritized remediation plan'
       ],
-      price: '€99',
+      price: '€350',
       duration: '2-3 days',
       gradient: 'from-blue-500 to-purple-600'
     },
@@ -34,7 +34,7 @@ const ServicesPage = () => {
         'Risk assessment report',
         'Real-time alerts (optional)'
       ],
-      price: '€49',
+      price: '€200',
       duration: '1-2 days',
       gradient: 'from-green-500 to-teal-600'
     },
@@ -51,7 +51,7 @@ const ServicesPage = () => {
         'Network mapping',
         'Hardening recommendations'
       ],
-      price: '€149',
+      price: '€350',
       duration: '3-4 days',
       gradient: 'from-orange-500 to-red-600'
     }
@@ -68,7 +68,7 @@ const ServicesPage = () => {
         'Critical vulnerabilities identified',
         '48h email support'
       ],
-      price: '€39',
+      price: '€400',
       popular: false
     },
     {
@@ -82,7 +82,7 @@ const ServicesPage = () => {
         'Follow-up consultation',
         '24h priority support'
       ],
-      price: '€149',
+      price: '€500',
       popular: true
     },
     {
@@ -97,7 +97,7 @@ const ServicesPage = () => {
         'Annual retesting discount',
         '24/7 priority support'
       ],
-      price: '€299',
+      price: '€700',
       popular: false
     }
   ];

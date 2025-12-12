@@ -23,10 +23,10 @@ const GuideCard = ({ guide }) => {
       <div className="bg-gray-50 hover:bg-white rounded-2xl p-6 transition-all duration-300 border-2 border-transparent hover:border-gray-200 hover:shadow-lg cursor-pointer">
         {/* Title */}
         <div className="flex items-start justify-between mb-3">
-          <h3 className="text-base font-semibold text-gray-900 group-hover:text-[#0071e3] transition-colors pr-2">
+          <h3 className="text-base font-semibold text-gray-900 group-hover:text-[#6b7280] transition-colors pr-2">
             {guide.title}
           </h3>
-          <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-[#0071e3] group-hover:translate-x-1 transition-all flex-shrink-0 mt-0.5" />
+          <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-[#6b7280] group-hover:translate-x-1 transition-all flex-shrink-0 mt-0.5" />
         </div>
 
         {/* Meta Info */}

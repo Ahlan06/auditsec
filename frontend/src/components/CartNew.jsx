@@ -83,7 +83,7 @@ const Cart = () => {
                         </button>
                       </div>
                       <span className={`font-bold transition-colors duration-300 ${
-                        isDarkMode ? 'text-[#0071e3]' : 'text-[#0071e3]'
+                        isDarkMode ? 'text-[#6b7280]' : 'text-[#6b7280]'
                       }`}>
                         €{(item.price * item.quantity).toFixed(2)}
                       </span>
@@ -100,7 +100,7 @@ const Cart = () => {
                     isDarkMode ? 'text-white' : 'text-slate-800'
                   }`}>Total:</span>
                   <span className={`text-xl font-bold transition-colors duration-300 ${
-                    isDarkMode ? 'text-[#0071e3]' : 'text-[#0071e3]'
+                    isDarkMode ? 'text-[#6b7280]' : 'text-[#6b7280]'
                   }`}>
                     €{total.toFixed(2)}
                   </span>
@@ -111,8 +111,8 @@ const Cart = () => {
                     to="/checkout"
                     className={`w-full inline-block text-center py-3 rounded-full font-semibold transition-all ${
                       isDarkMode 
-                        ? 'bg-[#0071e3] text-white hover:bg-[#0077ed]' 
-                        : 'bg-[#0071e3] text-white hover:bg-[#0077ed]'
+                        ? 'bg-[#6b7280] text-white hover:bg-[#4b5563]' 
+                        : 'bg-[#6b7280] text-white hover:bg-[#4b5563]'
                     }`}
                   >
                     Checkout

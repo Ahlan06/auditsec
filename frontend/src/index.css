@@ -102,6 +102,26 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
 }
 
+/* Improve readability for course content and prose blocks */
+.prose, .course-detail-main, .prose-container {
+  line-height: 1.75; /* more breathing room */
+  letter-spacing: 0.01em;
+}
+
+.prose p, .prose li, .prose blockquote {
+  margin-bottom: 1rem;
+}
+
+.prose h2, .prose h3 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.25;
+}
+
+.course-card-hero .card-title, .course-card-hero p {
+  line-height: 1.5;
+}
+
 .hero-title {
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 700;
@@ -223,7 +243,7 @@ h1, h2, h3, h4, h5, h6 {
    ============================================ */
 
 .apple-button {
-  background: #0071e3;
+  background: var(--accent-1);
   color: #ffffff;
   border: none;
   border-radius: 980px;
@@ -236,19 +256,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .dark .apple-button {
-  background: #0a84ff;
-  box-shadow: 0 2px 8px rgba(10, 132, 255, 0.3);
+  background: var(--accent-1);
+  box-shadow: 0 2px 8px rgba(75,85,99,0.12);
 }
 
 .apple-button:hover {
-  background: #0077ed;
+  background: #4b5563;
   transform: scale(0.98);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .dark .apple-button:hover {
-  background: #409cff;
-  box-shadow: 0 4px 12px rgba(10, 132, 255, 0.4);
+  background: #4b5563;
+  box-shadow: 0 4px 12px rgba(75,85,99,0.16);
 }
 
 .apple-button:active {
@@ -257,8 +277,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .apple-button-secondary {
   background: transparent;
-  color: #0071e3;
-  border: 2px solid #0071e3;
+  color: var(--accent-1);
+  border: 2px solid var(--accent-1);
   border-radius: 980px;
   padding: 10px 22px;
   font-size: 17px;
@@ -268,18 +288,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .dark .apple-button-secondary {
-  color: #0a84ff;
-  border-color: #0a84ff;
+  color: var(--accent-1);
+  border-color: var(--accent-1);
 }
 
 .apple-button-secondary:hover {
-  background: #0071e3;
+  background: var(--accent-1);
   color: #ffffff;
   transform: scale(0.98);
 }
 
 .dark .apple-button-secondary:hover {
-  background: #0a84ff;
+  background: #4b5563;
   color: #ffffff;
 }
 
@@ -288,7 +308,7 @@ h1, h2, h3, h4, h5, h6 {
    ============================================ */
 
 .apple-link {
-  color: #0071e3;
+  color: var(--accent-1);
   text-decoration: none;
   position: relative;
   transition: color 0.3s ease;
@@ -301,7 +321,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 50%;
   width: 0;
   height: 1px;
-  background: #0071e3;
+  background: var(--accent-1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateX(-50%);
 }
@@ -311,7 +331,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .apple-link:hover {
-  color: #0077ed;
+  color: #4b5563;
 }
 
 /* Scale on click */
@@ -426,7 +446,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--accent-2) 0%, var(--accent-1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -475,7 +495,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Selection styling */
 ::selection {
-  background: rgba(0, 113, 227, 0.2);
+  background: rgba(107,114,128,0.12);
   color: inherit;
 }
 
@@ -485,7 +505,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .apple-spinner {
   border: 2px solid rgba(0, 0, 0, 0.1);
-  border-top: 2px solid #0071e3;
+  border-top: 2px solid var(--accent-1);
   border-radius: 50%;
   width: 24px;
   height: 24px;
@@ -649,7 +669,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .dark input:focus,
 .dark textarea:focus {
-  border-color: #0a84ff;
+  border-color: var(--accent-1);
 }
 
 /* Hover states for cards and clickable elements */
@@ -659,4 +679,248 @@ h1, h2, h3, h4, h5, h6 {
 
 .dark .hover\:bg-gray-100:hover {
   background-color: #3a3a3c;
+}
+
+/* ============================================
+   UI ENHANCEMENTS: HERO, CARDS, CTA, PROGRESS
+   ============================================ */
+
+/* decorative glow behind hero */
+.hero-decor {
+  position: absolute;
+  left: 50%;
+  top: 120px;
+  transform: translateX(-50%);
+  width: 680px;
+  height: 320px;
+  background: radial-gradient(closest-side, rgba(107,114,128,0.06), transparent 40%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.apple-section .hero-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animated cards */
+.animated-card {
+  transition: transform 420ms cubic-bezier(.2,.9,.2,1), box-shadow 250ms ease, background 250ms ease;
+  will-change: transform;
+}
+.animated-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(16,24,40,0.12);
+}
+
+.card-badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* subtle floating animation for featured cards */
+@keyframes floaty {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+.product-card.floaty { animation: floaty 6s ease-in-out infinite; }
+
+/* CTA pulse for primary buttons */
+.apple-button.pulse {
+  position: relative;
+  overflow: visible;
+}
+.apple-button.pulse::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(107,114,128,0.12), transparent 40%);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 420ms ease, transform 420ms ease;
+}
+.apple-button.pulse:hover::after { opacity: 1; transform: scale(1); }
+
+/* Progress visuals */
+.progress-track { height: 12px; border-radius: 999px; background: rgba(0,0,0,0.04); overflow: hidden; }
+.progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg,var(--accent-2),var(--accent-1)); transition: width 420ms cubic-bezier(.2,.8,.2,1); }
+.progress-label { position: absolute; inset: 0; display:flex; align-items:center; justify-content:center; font-size:12px; color:#0f172a; pointer-events:none; }
+
+/* TOC highlight contrast */
+.course-toc .course-toc-item-active { color:var(--accent-1); font-weight:700; }
+
+/* section spacing improvements */
+.apple-section { padding-top: 80px; padding-bottom: 80px; }
+.apple-section .section-title { margin-bottom: 28px; }
+
+@media (max-width: 768px) {
+  .hero-decor { width: 320px; height: 140px; top: 100px; }
+  .product-card.floaty { animation: none; }
+}
+
+/* Compact Apple-like adjustments for course list */
+.course-hero {
+  margin-bottom: 0.5rem;
+}
+
+.course-hero + section {
+  margin-top: 2.5rem; /* increase distance between subtitle and cards */
+}
+
+.course-card-hero {
+  padding: 1.1rem !important; /* slightly more compact cards */
+  border-radius: 16px;
+  background: rgba(255,255,255,0.96);
+  box-shadow: 0 10px 30px rgba(16,24,40,0.06);
+  border: 1px solid rgba(16,24,40,0.04);
+}
+
+.course-card-hero .card-title {
+  font-size: 1.125rem; /* slightly smaller title */
+  line-height: 1.2;
+}
+
+.course-card-hero p {
+  font-size: 0.95rem;
+  color: #5b6170;
+}
+
+.course-card-hero .apple-button {
+  padding: 8px 18px;
+  font-size: 15px;
+}
+
+.course-card-hero .progress-track { height: 8px; }
+.course-card-hero .progress-label { font-size: 11px; color: #475569; }
+
+/* tighten vertical spacing inside cards */
+.course-card-hero .mt-4 { margin-top: 0.8rem !important; }
+
+/* make grid a bit tighter */
+.grid.gap-6 { gap: 1.25rem !important; }
+
+@media (max-width: 1024px) {
+  .course-card-hero { padding: 1rem !important; }
+}
+
+/* hero star image styling */
+.hero-star {
+  width: 64px;
+  height: 64px;
+  display: block;
+  border-radius: 10px;
+  object-fit: contain;
+  box-shadow: 0 8px 20px rgba(15,23,42,0.08);
+}
+
+/* Course icon style */
+.course-card-hero img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 8px;
+  display: none; /* hide leftover course icons (user requested no stars) */
+}
+
+/* module thumbnails in course detail */
+.module-thumb { display: flex; align-items:center; gap:0.75rem; border: 1px solid rgba(0,0,0,0.04); }
+.module-thumb img { width: 32px; height: 32px; object-fit: contain; }
+.module-thumb:hover { transform: translateY(-4px); transition: transform 200ms ease; }
+
+/* =======================
+   UI POLISH - ADDED
+   ======================= */
+:root{
+  --accent-1: #6b7280; /* primary gray */
+  --accent-2: #9ca3af; /* lighter gray */
+  --muted: #f3f4f6;
+  --card-shadow: 0 14px 40px rgba(16,24,40,0.07);
+}
+
+/* Hero decorative glow */
+.hero-decor{
+  position: absolute;
+  left: 50%;
+  top: 34%;
+  transform: translateX(-50%);
+  width: 68%;
+  height: 260px;
+  background: radial-gradient(closest-side, rgba(107,114,128,0.06), transparent 55%);
+  filter: blur(36px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-title{ position: relative; z-index: 1; transition: transform 0.45s ease; }
+.hero-title:hover{ transform: translateY(-3px); }
+
+/* CTA pulse */
+.apple-button.pulse{ box-shadow: 0 8px 24px rgba(107,114,128,0.10); animation: pulse 3s infinite; }
+@keyframes pulse{ 0%{ transform: translateY(0);} 50%{ transform: translateY(-2px);} 100%{ transform: translateY(0);} }
+
+/* Animated course cards */
+.card-animated{ border-radius: 18px; background: linear-gradient(180deg,#fff 0%,#fbfdff 100%); border:1px solid rgba(107,114,128,0.06); box-shadow:var(--card-shadow); transition:transform .35s ease,box-shadow .35s ease,border-color .25s ease; }
+.card-animated:hover{ transform: translateY(-10px) scale(1.01); border-color: rgba(107,114,128,0.16); box-shadow: 0 28px 60px rgba(16,24,40,0.12); }
+
+.product-card .text-gray-600{ color: #6b7280; }
+
+.apple-button-secondary{ border-color: rgba(107,114,128,0.14); color: var(--accent-1); }
+.apple-button-secondary:hover{ background: var(--accent-1); color: white; }
+
+/* Tighter, nicer progress visuals */
+.progress-track{ height:12px; background:var(--muted); border-radius:999px; overflow:hidden; }
+.progress-fill{ height:100%; width:0%; background: linear-gradient(90deg,var(--accent-2) 0%, var(--accent-1) 70%); transition: width 420ms cubic-bezier(.2,.8,.2,1); }
+.progress-track .absolute{ pointer-events:none; }
+
+/* Subtle TOC active */
+.course-toc-item-active{ color:var(--accent-1) !important; font-weight:600; }
+
+/* small responsive tweaks */
+@media (max-width:768px){ .hero-decor{ display:none; } }
+
+/* ============================================
+   PROGRESS BAR STYLES
+   ============================================ */
+.progress-track {
+  height: 12px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.02));
+  border-radius: 999px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent-2) 0%, var(--accent-1) 60%);
+  transition: width 360ms ease;
+  border-radius: 999px;
+  box-shadow: inset 0 -2px 6px rgba(0,0,0,0.06);
+}
+
+.progress-track .progress-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: #374151;
+  pointer-events: none;
+}
+
+/* TOC active item */
+.course-toc-item-active {
+  color: var(--accent-1) !important;
+  font-weight: 600;
+}
+
+.course-toc button.apple-link {
+  padding: 4px 0;
 }

@@ -47,9 +47,9 @@ const CartPage = () => {
             <Link
               to="/products"
               className={`inline-flex items-center px-8 py-3 rounded-full font-semibold transition-all ${
-                isDarkMode 
-                  ? 'bg-[#0071e3] hover:bg-[#0077ed] text-white' 
-                  : 'bg-[#0071e3] hover:bg-[#0077ed] text-white'
+                  isDarkMode 
+                    ? 'bg-[#6b7280] hover:bg-[#4b5563] text-white' 
+                    : 'bg-[#6b7280] hover:bg-[#4b5563] text-white'
               }`}
             >
               <ArrowLeft className="w-5 h-5 mr-2" />
@@ -87,10 +87,10 @@ const CartPage = () => {
             <Link
               to="/"
               className={`inline-flex items-center px-4 py-2 rounded-full font-semibold ${
-                isDarkMode 
-                  ? 'bg-[#0071e3] hover:bg-[#0077ed] text-white' 
-                  : 'bg-[#0071e3] hover:bg-[#0077ed] text-white'
-              } transition-all`}
+                  isDarkMode 
+                    ? 'bg-[#6b7280] hover:bg-[#4b5563] text-white' 
+                    : 'bg-[#6b7280] hover:bg-[#4b5563] text-white'
+                } transition-all`}
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Continuer les achats
@@ -281,8 +281,8 @@ const CartPage = () => {
                 to="/checkout"
                 className={`w-full inline-flex items-center justify-center px-6 py-4 rounded-full font-semibold transition-all ${
                   isDarkMode 
-                    ? 'bg-[#0071e3] hover:bg-[#0077ed] text-white' 
-                    : 'bg-[#0071e3] hover:bg-[#0077ed] text-white'
+                    ? 'bg-[#6b7280] hover:bg-[#4b5563] text-white' 
+                    : 'bg-[#6b7280] hover:bg-[#4b5563] text-white'
                 }`}
               >
                 <CreditCard className="w-5 h-5 mr-2" />

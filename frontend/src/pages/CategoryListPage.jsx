@@ -40,11 +40,11 @@ const CategoryListPage = () => {
       <section className="border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <nav className="flex items-center gap-2 text-sm">
-            <Link to="/" className="text-gray-600 hover:text-[#0071e3] transition-colors">
+               <Link to="/" className="text-gray-600 hover:text-[#6b7280] transition-colors">
               Home
             </Link>
             <ChevronRight className="w-4 h-4 text-gray-400" />
-            <Link to="/guides" className="text-gray-600 hover:text-[#0071e3] transition-colors">
+               <Link to="/guides" className="text-gray-600 hover:text-[#6b7280] transition-colors">
               Guides
             </Link>
             <ChevronRight className="w-4 h-4 text-gray-400" />
@@ -58,7 +58,7 @@ const CategoryListPage = () => {
         <div className="max-w-6xl mx-auto px-4">
           <Link 
             to="/guides"
-            className="inline-flex items-center gap-2 text-[#0071e3] hover:opacity-80 transition-opacity mb-8 group"
+            className="inline-flex items-center gap-2 text-[#6b7280] hover:opacity-80 transition-opacity mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Back to All Categories
@@ -149,7 +149,7 @@ const CategoryListPage = () => {
               </h3>
               <div className="grid md:grid-cols-3 gap-6 mt-8">
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-[#0071e3] text-white rounded-xl flex items-center justify-center text-xl font-bold mx-auto mb-3">
+                     <div className="w-12 h-12 bg-[#6b7280] text-white rounded-xl flex items-center justify-center text-xl font-bold mx-auto mb-3">
                     1
                   </div>
                   <h4 className="font-semibold text-gray-900 mb-2">Read in Order</h4>
@@ -158,7 +158,7 @@ const CategoryListPage = () => {
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-[#0071e3] text-white rounded-xl flex items-center justify-center text-xl font-bold mx-auto mb-3">
+                     <div className="w-12 h-12 bg-[#6b7280] text-white rounded-xl flex items-center justify-center text-xl font-bold mx-auto mb-3">
                     2
                   </div>
                   <h4 className="font-semibold text-gray-900 mb-2">Practice Hands-On</h4>
@@ -167,7 +167,7 @@ const CategoryListPage = () => {
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-[#0071e3] text-white rounded-xl flex items-center justify-center text-xl font-bold mx-auto mb-3">
+                     <div className="w-12 h-12 bg-[#6b7280] text-white rounded-xl flex items-center justify-center text-xl font-bold mx-auto mb-3">
                     3
                   </div>
                   <h4 className="font-semibold text-gray-900 mb-2">Take Notes</h4>

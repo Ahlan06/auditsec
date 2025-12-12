@@ -80,7 +80,7 @@ const GuidesPage = () => {
                   {categoryGuides.length > 0 && (
                     <div 
                       onClick={() => navigate(`/category/${category.id}`)}
-                      className="block w-full py-3 px-4 rounded-xl border-2 border-[#0071e3] bg-white text-[#0071e3] font-medium hover:bg-[#0071e3] hover:text-white transition-all duration-300 text-center cursor-pointer select-none"
+                      className="block w-full py-3 px-4 rounded-xl border-2 border-[#6b7280] bg-white text-[#6b7280] font-medium hover:bg-[#6b7280] hover:text-white transition-all duration-300 text-center cursor-pointer select-none"
                       role="button"
                       tabIndex={0}
                       onKeyDown={(e) => { if (e.key === 'Enter') navigate(`/category/${category.id}`); }}
@@ -109,19 +109,19 @@ const GuidesPage = () => {
 
             <div className="grid md:grid-cols-3 gap-6 text-sm">
               <div className="bg-white rounded-xl p-6 shadow-sm">
-                <div className="text-3xl font-bold text-[#0071e3] mb-2">
+                <div className="text-3xl font-bold text-[#6b7280] mb-2">
                   {guides.length}+
                 </div>
                 <div className="text-gray-600">Expert Guides</div>
               </div>
               <div className="bg-white rounded-xl p-6 shadow-sm">
-                <div className="text-3xl font-bold text-[#0071e3] mb-2">
+                <div className="text-3xl font-bold text-[#6b7280] mb-2">
                   {guidesCategories.length}
                 </div>
                 <div className="text-gray-600">Categories</div>
               </div>
               <div className="bg-white rounded-xl p-6 shadow-sm">
-                <div className="text-3xl font-bold text-[#0071e3] mb-2">
+                <div className="text-3xl font-bold text-[#6b7280] mb-2">
                   {guides.reduce((sum, guide) => sum + guide.duration, 0)}+
                 </div>
                 <div className="text-gray-600">Hours of Content</div>

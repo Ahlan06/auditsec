@@ -41,17 +41,17 @@ const GuideDetailPage = () => {
       <section className="border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-4 py-4">
           <nav className="flex items-center gap-2 text-sm">
-            <Link to="/" className="text-gray-600 hover:text-[#0071e3] transition-colors">
+            <Link to="/" className="text-gray-600 hover:text-[#6b7280] transition-colors">
               Home
             </Link>
             <ChevronRight className="w-4 h-4 text-gray-400" />
-            <Link to="/guides" className="text-gray-600 hover:text-[#0071e3] transition-colors">
+            <Link to="/guides" className="text-gray-600 hover:text-[#6b7280] transition-colors">
               Guides
             </Link>
             <ChevronRight className="w-4 h-4 text-gray-400" />
             <Link 
               to="/guides" 
-              className="text-gray-600 hover:text-[#0071e3] transition-colors"
+              className="text-gray-600 hover:text-[#6b7280] transition-colors"
             >
               {category?.name}
             </Link>
@@ -66,7 +66,7 @@ const GuideDetailPage = () => {
         <div className="max-w-4xl mx-auto px-4">
           <Link 
             to="/guides"
-            className="inline-flex items-center gap-2 text-[#0071e3] hover:opacity-80 transition-opacity mb-8 group"
+            className="inline-flex items-center gap-2 text-[#6b7280] hover:opacity-80 transition-opacity mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Back to Guides
@@ -156,7 +156,7 @@ const GuideDetailPage = () => {
                       </SyntaxHighlighter>
                     </div>
                   ) : (
-                    <code className="bg-gray-100 text-[#0071e3] px-2 py-1 rounded text-sm font-mono" {...props}>
+                    <code className="bg-gray-100 text-[#6b7280] px-2 py-1 rounded text-sm font-mono" {...props}>
                       {children}
                     </code>
                   );
@@ -164,12 +164,12 @@ const GuideDetailPage = () => {
                 
                 // Blockquote styling (for warnings/notes)
                 blockquote: (props) => (
-                  <blockquote className="border-l-4 border-[#0071e3] bg-blue-50 p-4 my-6 rounded-r-xl" {...props} />
+                  <blockquote className="border-l-4 border-[#6b7280] bg-gray-50 p-4 my-6 rounded-r-xl" {...props} />
                 ),
                 
                 // Link styling
                 a: (props) => (
-                  <a className="text-[#0071e3] hover:underline font-medium" {...props} />
+                  <a className="text-[#6b7280] hover:underline font-medium" {...props} />
                 ),
                 
                 // Strong/Bold styling
@@ -212,7 +212,7 @@ const GuideDetailPage = () => {
                     <ArrowLeft className="w-4 h-4" />
                     Previous Guide
                   </div>
-                  <h4 className="font-semibold text-gray-900 group-hover:text-[#0071e3] transition-colors">
+                  <h4 className="font-semibold text-gray-900 group-hover:text-[#6b7280] transition-colors">
                     {prevGuide.title}
                   </h4>
                 </Link>
@@ -227,7 +227,7 @@ const GuideDetailPage = () => {
                     Next Guide
                     <ChevronRight className="w-4 h-4" />
                   </div>
-                  <h4 className="font-semibold text-gray-900 text-right group-hover:text-[#0071e3] transition-colors">
+                  <h4 className="font-semibold text-gray-900 text-right group-hover:text-[#6b7280] transition-colors">
                     {nextGuide.title}
                   </h4>
                 </Link>
