@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import Audit from '../models/Audit.js';
+import { enqueueAuditJob, removeAuditJob } from '../queues/auditQueue.js';
 
 // ===================================
 // VALIDATION SCHEMAS
@@ -275,10 +276,10 @@ export const runAudit = async (req, res) => {
     }
 
     // Vérifier que l'audit n'est pas déjà en cours ou terminé
-    if (audit.status === 'running') {
+    if (audit.status === 'running' || audit.status === 'queued') {
       return res.status(400).json({
         error: 'Bad Request',
-        message: 'Audit is already running',
+        message: `Audit is already ${audit.status}`,
       });
     }
 
@@ -289,19 +290,45 @@ export const runAudit = async (req, res) => {
       });
     }
 
-    // Démarrer l'audit
-    await audit.start();
+    // Mettre le status à 'queued' (le worker le passera à 'running')
+    audit.status = 'queued';
+    audit.progress = 0;
+    await audit.save();
 
-    // TODO: Ajouter à la queue BullMQ pour exécution asynchrone
-    // await auditQueue.add('run-audit', { auditId: audit._id });
+    // Envoyer le job BullMQ
+    try {
+      await enqueueAuditJob({
+        auditId: audit._id.toString(),
+        targetType: audit.targetType,
+        targetValue: audit.targetValue,
+        userId: audit.userId.toString(),
+      });
+      
+      console.log(`[AuditController] Audit ${audit._id} enqueued successfully`);
+    } catch (queueError) {
+      console.error('[AuditController] Failed to enqueue audit:', queueError);
+      // Revert audit status if queue fails
+      audit.status = 'failed';
+      audit.error = 'Failed to enqueue audit job';
+      await audit.save();
+      
+      return res.status(500).json({
+        error: 'Internal Server Error',
+        message: 'Failed to queue audit for processing',
+      });
+    }
 
     return res.status(200).json({
-      message: 'Audit started successfully',
+      message: 'Audit queued successfully',
       audit: {
         id: audit._id,
+        userId: audit.userId,
+        targetType: audit.targetType,
+        targetValue: audit.targetValue,
         status: audit.status,
         progress: audit.progress,
-        startedAt: audit.startedAt,
+        createdAt: audit.createdAt,
+        updatedAt: audit.updatedAt,
       },
     });
   } catch (error) {
@@ -363,11 +390,17 @@ export const cancelAudit = async (req, res) => {
       });
     }
 
+    // Supprimer de la queue BullMQ si présent
+    try {
+      await removeAuditJob(audit._id.toString());
+      console.log(`[AuditController] Audit ${audit._id} removed from queue`);
+    } catch (queueError) {
+      console.warn('[AuditController] Failed to remove from queue (may not exist):', queueError.message);
+      // Continue anyway - job may have already processed
+    }
+
     // Annuler l'audit
     await audit.fail('Cancelled by user');
-
-    // TODO: Supprimer de la queue BullMQ si présent
-    // await auditQueue.remove(audit._id);
 
     return res.status(200).json({
       message: 'Audit cancelled successfully',

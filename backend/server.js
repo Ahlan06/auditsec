@@ -24,6 +24,7 @@ import authSqliteRoutes from './routes/authSqlite.js';
 import supportRoutes from './routes/support.js';
 import meRoutes from './routes/me.js';
 import auditsRoutes from './routes/audits.js';
+import aiRoutes from './routes/ai.js';
 
 // Charger le .env depuis le dossier backend
 const __filename = fileURLToPath(import.meta.url);
@@ -151,6 +152,9 @@ app.use('/api/me', meRoutes);
 
 // Audits routes (JWT protected + RBAC)
 app.use('/api/audits', auditsRoutes);
+
+// AI routes (JWT protected)
+app.use('/api/ai', aiRoutes);
 
 // Auth routes - Using PostgreSQL
 app.use('/api/auth', authRoutes);

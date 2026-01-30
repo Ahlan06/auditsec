@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import HeaderApple from './components/HeaderApple';
 import FooterApple from './components/FooterApple';
 import ScrollToTop from './components/ScrollToTop';
+import ApiErrorBoundary from './components/ApiErrorBoundary';
+import { UpgradeRequiredModal } from './components/UpgradeRequired';
 import HomePageSimple from './pages/HomePageSimple';
 import ContactPageApple from './pages/ContactPageApple';
 import ServicesPageApple from './pages/ServicesPageApple';
@@ -37,7 +39,7 @@ import ClientProfilePage from './pages/ClientProfilePage';
 import ClientSubscriptionPage from './pages/ClientSubscriptionPage';
 import ClientToolsPage from './pages/ClientToolsPage';
 import ClientAuditWorkflowPage from './pages/ClientAuditWorkflowPage';
-import ClientAssistantPage from './pages/ClientAssistantPage.jsx';
+import ClientAssistantPage from './pages/ClientAssistantPageNew.jsx';
 import ClientSectionPage from './components/client-dashboard/ClientSectionPage.tsx';
 import ClientDashboardLayout from './components/client-dashboard/ClientDashboardLayout';
 
@@ -180,8 +182,11 @@ function App() {
 
   return (
     <Router>
-      <ScrollToTop />
-      <AppShell />
+      <ApiErrorBoundary>
+        <ScrollToTop />
+        <AppShell />
+        <UpgradeRequiredModal />
+      </ApiErrorBoundary>
     </Router>
   );
 }

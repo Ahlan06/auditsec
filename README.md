@@ -29,13 +29,13 @@ AuditSec is a **freelance cybersecurity platform** specializing in:
 - **Multi-language Support**: Interface available in multiple languages
 - **Secure Payments**: Integrated Stripe checkout for service bookings
 
-### 💼 **Professional Approach**
+### � **Professional Approach**
 - Detailed security reports with executive summaries
 - OWASP Top 10 methodology compliance
 - Confidential and ethical testing practices
 - Post-audit support and remediation guidance
 
-## 💻 Technologies
+## � Technologies
 
 This platform is built entirely with modern **JavaScript/Node.js** ecosystem:
 
