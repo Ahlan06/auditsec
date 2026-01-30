@@ -1,0 +1,20 @@
+[project]
+name = "auditsec-training-simulator"
+version = "0.1.0"
+description = "AuditSec – Educational OWASP Top 10 training simulator (safe, authorized testing only)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "AuditSec" }]
+
+dependencies = [
+]
+
+[project.scripts]
+auditsec-train = "auditsec_training_simulator.cli:main"
+
+[tool.ruff]
+line-length = 110
+
+[tool.pyright]
+typeCheckingMode = "basic"
